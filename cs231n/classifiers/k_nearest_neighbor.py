@@ -129,11 +129,15 @@ class KNearestNeighbor(object):
     #########################################################################
     
     # sth wrong here
-    test_square = np.power(X,2)
-    train_square = np.power(self.X_train,2)
+    test_square = np.sum(X**2,axis=1).reshape([num_test,1])
+    train_square = np.sum(self.X_train **2,axis=1)
     diff_term = -2 * X.dot(self.X_train.T)
     
+    # print(test_square.shape)
+    # print(train_square.shape)
+    # print(diff_term.shape)
     dists = test_square + train_square + diff_term
+
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
@@ -154,7 +158,6 @@ class KNearestNeighbor(object):
     """
     num_test = dists.shape[0]
     y_pred = np.zeros(num_test)
-    print(self.y_train.shape)
     for i in range(num_test):
       # A list of length k storing the labels of the k nearest neighbors to
       # the ith test point.
