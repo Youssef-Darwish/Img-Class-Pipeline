@@ -92,8 +92,9 @@ def softmax_loss_vectorized(W, X, y, reg):
 
   epsilon = 1e-14
   N = X.shape[0]
+  #print the dimensions , review your implementation
   loss = -np.sum(np.log(probabilities[np.arange(N), y] + epsilon)) / N
-
+  
   dscores = probabilities.copy()
   dscores[np.arange(N), y] -= 1
   dscores /= N
