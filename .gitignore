@@ -1,0 +1,6 @@
+*.ipynb_checkpoints/
+*.swp
+*./pyc
+*.pyc
+.env/*
+/cs231n/__pycache__/
